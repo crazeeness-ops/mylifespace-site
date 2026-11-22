@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>카드 문자 자동 수집 설정 · My LifeSpace</title>
+  <link rel="icon" href="icon.png" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .tabs { display: flex; gap: 8px; margin: 8px 0 4px; }
+    .tabs a { flex: 1; text-align: center; padding: 12px; border-radius: 14px; border: 1px solid var(--border);
+      background: var(--card); color: var(--text); text-decoration: none; font-weight: 600; }
+    .step { display: flex; gap: 14px; padding: 12px 0; border-bottom: 1px solid var(--border); }
+    .step:last-child { border-bottom: 0; }
+    .num { flex: none; width: 28px; height: 28px; border-radius: 50%; background: var(--primary); color: #fff;
+      display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 14px; }
+    .step p { margin: 0; }
+    b.ui { background: var(--bg); border: 1px solid var(--border); border-radius: 6px; padding: 1px 6px; font-weight: 600; }
+    code { background: var(--bg); border: 1px solid var(--border); border-radius: 6px; padding: 1px 6px; }
+    .note { border-left: 4px solid var(--primary); }
+    section { scroll-margin-top: 16px; }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <img src="icon.png" alt="" />
+      <div>
+        <h1>카드 문자 자동 수집 설정</h1>
+        <div class="muted">My LifeSpace · 처음 한 번, 약 3분</div>
+      </div>
+    </header>
+
+    <div class="card">
+      카드·은행 결제 문자가 오면 휴대폰이 그 내용을 <strong>내 전용 주소</strong>로 보내고, My LifeSpace가 금액·가맹점·시간을 읽어 가계부에 자동으로 적어요.
+      <ol>
+        <li>앱에서 <b class="ui">더보기</b> → <b class="ui">카드 문자 자동 수집</b>으로 가서 <b class="ui">주소 복사</b>를 누르세요.</li>
+        <li>아래에서 내 휴대폰을 골라 그대로 따라 하세요.</li>
+      </ol>
+      <div class="tabs">
+        <a href="#iphone">아이폰</a>
+        <a href="#android">안드로이드</a>
+      </div>
+    </div>
+
+    <section id="iphone">
+      <h2>아이폰 (단축어 앱)</h2>
+      <div class="card">
+        <div class="step"><div class="num">1</div><p><b class="ui">단축어</b> 앱을 열고 아래쪽 <b class="ui">자동화</b> 탭 → 오른쪽 위 <b class="ui">+</b>를 누르세요.</p></div>
+        <div class="step"><div class="num">2</div><p>목록에서 <b class="ui">메시지</b>를 고르세요.</p></div>
+        <div class="step"><div class="num">3</div><p><b class="ui">메시지 포함</b>을 눌러 <code>승인</code>을 입력하세요. (대부분의 카드 결제 문자에 들어 있는 단어예요)</p></div>
+        <div class="step"><div class="num">4</div><p><b class="ui">즉시 실행</b>을 고르고 <b class="ui">다음</b>을 누르세요. (확인을 묻지 않고 바로 보내요)</p></div>
+        <div class="step"><div class="num">5</div><p><b class="ui">새로운 빈 자동화</b> → <b class="ui">동작 추가</b>에서 <b class="ui">URL 콘텐츠 가져오기</b>를 검색해 추가하세요.</p></div>
+        <div class="step"><div class="num">6</div><p><b class="ui">URL</b> 자리를 눌러 앱에서 복사한 주소를 붙여넣으세요.</p></div>
+        <div class="step"><div class="num">7</div><p>동작 옆 <b class="ui">&gt;</b>를 눌러 펼치고 <b class="ui">방법</b>을 <b class="ui">POST</b>로, <b class="ui">요청 본문</b>을 <b class="ui">JSON</b>으로 바꾸세요.</p></div>
+        <div class="step"><div class="num">8</div><p><b class="ui">새로운 필드 추가</b> → <b class="ui">텍스트</b>를 누르고, 키에 <code>text</code>, 값에는 변수 <b class="ui">단축어 입력</b>을 넣으세요. 넣은 변수를 한 번 더 눌러 <b class="ui">내용</b>을 고르면 문자 내용이 보내져요.</p></div>
+        <div class="step"><div class="num">9</div><p>오른쪽 위 <b class="ui">완료</b>를 누르면 끝!</p></div>
+      </div>
+      <div class="card note muted">
+        은행 출금 문자도 받고 싶다면 같은 방법으로 자동화를 하나 더 만들고 3번에 <code>출금</code>을 넣으세요.
+      </div>
+    </section>
+
+    <section id="android">
+      <h2>안드로이드 (MacroDroid)</h2>
+      <div class="card">
+        <div class="step"><div class="num">1</div><p>Play 스토어에서 <b class="ui">MacroDroid</b>를 설치하고 여세요. (무료로 충분해요)</p></div>
+        <div class="step"><div class="num">2</div><p><b class="ui">매크로 추가</b>를 누르세요.</p></div>
+        <div class="step"><div class="num">3</div><p><b class="ui">트리거</b>의 <b class="ui">+</b> → <b class="ui">전화/SMS</b> → <b class="ui">SMS 수신</b>을 고르고, 내용에 <code>승인</code>이 포함될 때로 정하세요. 문자 권한을 물으면 허용해 주세요.</p></div>
+        <div class="step"><div class="num">4</div><p><b class="ui">액션</b>의 <b class="ui">+</b> → <b class="ui">연결</b> → <b class="ui">HTTP 요청</b>을 고르세요.</p></div>
+        <div class="step"><div class="num">5</div><p>요청 방식은 <b class="ui">POST</b>, URL에는 앱에서 복사한 주소를 붙여넣으세요.</p></div>
+        <div class="step"><div class="num">6</div><p><b class="ui">본문</b>의 내용 유형을 <code>text/plain</code>으로 하고, 본문 칸 옆 <b class="ui">…</b>(마법 텍스트)에서 <b class="ui">SMS 메시지 내용</b>을 넣으세요.</p></div>
+        <div class="step"><div class="num">7</div><p>매크로 이름을 <code>가계부</code>로 짓고 저장하면 끝!</p></div>
+      </div>
+      <div class="card note muted">
+        카드사 앱 <strong>알림</strong>으로만 결제 소식을 받는다면 3번에서 <b class="ui">알림</b> → <b class="ui">알림 수신</b>을 고르고 카드사 앱을 선택한 뒤, 6번에서 <b class="ui">알림 텍스트</b>를 넣으세요.
+      </div>
+    </section>
+
+    <h2>잘 되는지 확인하기</h2>
+    <div class="card">
+      다음 결제 뒤 앱의 <b class="ui">가계부</b>에 내역이 생겼는지 보세요. 안 보이면 <b class="ui">재무 설정</b> → <b class="ui">수신함</b>에서 문자가 도착했는지, 왜 등록되지 않았는지 확인할 수 있어요.
+    </div>
+
+    <h2>꼭 알아 두세요</h2>
+    <div class="card">
+      <ul>
+        <li>내 전용 주소는 <strong>비밀번호처럼</strong> 다른 사람에게 알려 주지 마세요. 주소가 새어 나갔다면 앱에서 <b class="ui">주소 새로 발급</b>을 누르고 폰 설정의 주소도 바꿔 주세요.</li>
+        <li>My LifeSpace는 휴대폰의 문자를 직접 읽지 않아요. 내가 만든 자동화가 보낸 결제 문자만 받아요.</li>
+        <li>금액이 없는 일반 문자는 저장하지 않아요. 자세한 내용은 <a href="privacy.html">개인정보처리방침</a>을 확인하세요.</li>
+      </ul>
+    </div>
+
+    <p class="muted"><a href="index.html">My LifeSpace 홈</a></p>
+  </main>
+</body>
+</html>
